@@ -111,11 +111,12 @@ class Node:
         text = "name: " + self.name + " cost: " + str(self.cost) + " previous: " + self.previous
         print(text)
 
+import sys
 import graph
 if __name__ == "__main__":
-    g = graph.load_graph("graph.txt")
+    g = graph.load_graph(sys.argv[1])
     dijkstra = Dijkstra(g)
-    dijkstra.set_start("a")
-    dijkstra.the_best_way_to("c")
+    dijkstra.set_start("C")
+    dijkstra.the_best_way_to("B")
     
     
