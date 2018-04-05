@@ -3,7 +3,7 @@ import sys
 class Link:
     def __init__(self, to, weight):
         self.to = to
-        self.weight = weight
+        self.weight = int(weight)
 
 def load_graph(path):
     graph = {}
@@ -34,5 +34,5 @@ if __name__ == "__main__":
         print("name: " + name)
         link_string = ""
         for link in graph[name]:
-            link_string += "link_to: " + link.to + " weight: " + link.weight + " "
+            link_string += "link_to: " + link.to + " weight: " + str(link.weight) + " "
         print(link_string)
