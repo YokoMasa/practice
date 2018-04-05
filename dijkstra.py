@@ -4,6 +4,24 @@ class Dijkstra:
         self.graph = graph
         self.nodes = self.init_node_list()
 
+    def the_best_way_to(self, goal_key):
+        result = []
+        check_flag = True
+        current = self.nodes[goal_key]
+        cost = current.cost
+        result.append(current)
+
+        while check_flag:
+            if current.previous == "":
+                check_flag = False
+            else:
+                current = self.nodes[current.previous]
+                result.append(current)
+        result.reverse()
+        path_names = map(lambda r: r.name, result)
+        print("cost: " + str(cost))
+        print(" -> ".join(path_names))
+
     def set_start(self, start_key):
         self.start_key = start_key
         self.nodes = self.init_node_list()
@@ -98,8 +116,6 @@ if __name__ == "__main__":
     g = graph.load_graph("graph.txt")
     dijkstra = Dijkstra(g)
     dijkstra.set_start("a")
-    for key in dijkstra.nodes.keys():
-        node = dijkstra.nodes[key]
-        node.print_content()
+    dijkstra.the_best_way_to("c")
     
     
