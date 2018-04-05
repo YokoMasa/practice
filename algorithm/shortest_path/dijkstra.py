@@ -114,9 +114,12 @@ class Node:
 import sys
 import graph
 if __name__ == "__main__":
-    g = graph.load_graph(sys.argv[1])
-    dijkstra = Dijkstra(g)
-    dijkstra.set_start("C")
-    dijkstra.the_best_way_to("B")
+    if len(sys.argv) == 4:
+        g = graph.load_graph(sys.argv[1])
+        dijkstra = Dijkstra(g)
+        dijkstra.set_start(sys.argv[2])
+        dijkstra.the_best_way_to(sys.argv[3])
+    else:
+        print("usage: python dijkstra.py [graph path] [start point name] [goal point name]")
     
     
